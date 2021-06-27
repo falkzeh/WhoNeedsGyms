@@ -1,4 +1,4 @@
-from secrets import secrets as sec
+from functions.secrets import secrets as sec
 
 import requests
 import json
@@ -6,9 +6,9 @@ import sys
 import psycopg2
 import logging
 
-logging.basicConfig(level=logging.debug, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
-def query_postgres(query):
+def query_postgres(query=None):
     """Query the configured Postgres database. Connection Credentials set in secrets/secrets.py.
 
     Args:
@@ -28,17 +28,20 @@ def query_postgres(query):
     finally:
         con.close()
 
-def yt_finder(snippet=None):
+def yt_finder(snippet=None, duration='any', order='relevance'):
     """Executes YouTube search for specific text snippet and returns results.
+       https://developers.google.com/youtube/v3/docs/search/list
 
     Args:
         snippet (str): Text snippet to look for on YouTube
+        duration (str): Duration of the video [any/long/medium/short]
+        order (str): Search result order [rating/date/relevance/title/videoCount/viewCount]
 
     Returns:
         results (list): Video id, video title, channel id and channel title of results
     """
 
-    req = requests.get(f'https://www.googleapis.com/youtube/v3/search?part=snippet&q={snippet.replace(' ', '%20')}&key={sec.yt_api_key}')
+    req = requests.get(f'''https://www.googleapis.com/youtube/v3/search?part=snippet&q={snippet.replace(' ', '%20')}&key={sec.yt_api_key}&maxResults=50&type=video&videoDuration={duration}&order={order}''')
     json = req.json()
 
     results = []
