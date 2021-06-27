@@ -16,4 +16,14 @@ def get_results(snippet, duration, order):
 
 
 if __name__ == '__main__':
-    get_results('Home Workout', duration='any', order='relevance')
+    get_results('Home Workout', duration='long', order='relevance')
+    get_results('Home Workout', duration='medium', order='relevance')
+    get_results('Home Workout', duration='short', order='relevance')
+
+    get_results('Home Workout', duration='long', order='rating')
+    get_results('Home Workout', duration='medium', order='rating')
+    get_results('Home Workout', duration='short', order='rating')
+
+    get_results('Home Workout', duration='long', order='date')
+    get_results('Home Workout', duration='medium', order='date')
+    get_results('Home Workout', duration='short', order='date')
