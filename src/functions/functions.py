@@ -5,6 +5,7 @@ import json
 import sys
 import psycopg2
 import logging
+import pandas as pd
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -26,6 +27,27 @@ def query_postgres(query=None):
 
     finally:
         con.close()
+
+def df_from_postgres(query=None):
+    """Query the configured Postgres database and return a Pandas DataFrame.
+
+    Args:
+        query (str): Query that will be executed on Postgres
+    
+    Returns:
+        df (DataFrame): Query Result in Pandas DataFrame
+    """
+
+    try:
+        engine = psycopg2.connect(database=sec.db_name, user=sec.db_user, password=sec.db_password, host=sec.db_host, port=sec.db_port)
+        df = pd.read_sql_query(query, con=engine)
+        return df
+    
+    except Exception as e:
+        logging.error(f'{e}')
+
+    finally:
+        engine.close()
 
 def yt_finder(snippet=None, duration='any', order='relevance'):
     """Executes YouTube search for specific text snippet and returns results.
