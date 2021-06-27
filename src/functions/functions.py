@@ -40,7 +40,7 @@ def yt_finder(snippet=None, duration='any', order='relevance'):
         results (list): Video id, video title, channel id and channel title of results
     """
 
-    req = requests.get(f'''https://www.googleapis.com/youtube/v3/search?part=snippet&q={snippet.replace(' ', '%20')}&key={sec.yt_api_key}&maxResults=50&type=video&videoDuration={duration}&order={order}''')
+    req = requests.get(f'''https://www.googleapis.com/youtube/v3/search?part=snippet&q={snippet.replace(' ', '%20')}&key={sec.yt_api_key}&maxResults=5&type=video&videoDuration={duration}&order={order}''')
     json = req.json()
 
     results = []

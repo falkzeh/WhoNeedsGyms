@@ -16,14 +16,8 @@ def get_results(snippet, duration, order):
 
 
 if __name__ == '__main__':
-    get_results('Home Workout', duration='long', order='relevance')
-    get_results('Home Workout', duration='medium', order='relevance')
-    get_results('Home Workout', duration='short', order='relevance')
+    for snippet in ['Home Workout', 'home workout for women', 'beginner workout at home', 'home workout with dumbbells', 'workout at home no jumping', 'workout at home belly fat']:
+        for duration in ['long', 'medium', 'short']:
+            for order in ['relevance', 'rating', 'date']:
+                get_results(snippet, duration=duration, order=order)
 
-    get_results('Home Workout', duration='long', order='rating')
-    get_results('Home Workout', duration='medium', order='rating')
-    get_results('Home Workout', duration='short', order='rating')
-
-    get_results('Home Workout', duration='long', order='date')
-    get_results('Home Workout', duration='medium', order='date')
-    get_results('Home Workout', duration='short', order='date')
