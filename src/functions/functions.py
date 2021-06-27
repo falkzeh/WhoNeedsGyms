@@ -2,9 +2,31 @@ from secrets import secrets as sec
 
 import requests
 import json
+import sys
+import psycopg2
+import logging
 
+logging.basicConfig(level=logging.debug, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
-test_snippet = 'ALL Jail Themes - Persona 5 Scramble / Strikers OST'
+def query_postgres(query):
+    """Query the configured Postgres database. Connection Credentials set in secrets/secrets.py.
+
+    Args:
+        query (str): Query that will be executed on Postgres
+    """
+
+    try:
+        con = psycopg2.connect(database=sec.db_database, user=sec.db_user, password=sec.db_password, host=sec.db_host, port=sec.db_port)
+        cur = con.cursor()
+        cur.execute(f'''{query}''')
+        con.commit()
+    
+    except Exception as e:
+        logging.error(f'{e}')
+        sys.exit()
+
+    finally:
+        con.close()
 
 def yt_finder(snippet=None):
     """Executes YouTube search for specific text snippet and returns results.
