@@ -16,7 +16,7 @@ def get_results(snippet, duration, order):
 
 
 if __name__ == '__main__':
-    for snippet in ['Home Workout', 'home workout for women', 'beginner workout at home', 'home workout with dumbbells', 'workout at home no jumping', 'workout at home belly fat']:
+    for snippet in ['Home Workout', 'home workout for women', 'beginner workout at home', 'home workout with dumbbells', 'workout at home no jumping', 'workout at home belly fat', 'home workout chest', 'home workout abs', 'home workout arms', 'home workout back', 'home workout cardio']:
         for duration in ['long', 'medium', 'short']:
             for order in ['relevance', 'rating', 'date']:
                 get_results(snippet, duration=duration, order=order)
