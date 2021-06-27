@@ -16,14 +16,13 @@ def query_postgres(query=None):
     """
 
     try:
-        con = psycopg2.connect(database=sec.db_database, user=sec.db_user, password=sec.db_password, host=sec.db_host, port=sec.db_port)
+        con = psycopg2.connect(database=sec.db_name, user=sec.db_user, password=sec.db_password, host=sec.db_host, port=sec.db_port)
         cur = con.cursor()
         cur.execute(f'''{query}''')
         con.commit()
     
     except Exception as e:
         logging.error(f'{e}')
-        sys.exit()
 
     finally:
         con.close()
