@@ -28,5 +28,5 @@ select video_id
 		   when snippet = 'home workout cardio' then 'Cardio' end as snippet
 	, row_number() over(partition by duration, order_category, snippet order by inserted_at desc) as rownum
 from workout.dl_yt_workout_finder) as main
-where main.rownum <= 5
+where main.rownum <= 8
 order by rownum desc;
