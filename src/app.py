@@ -5,17 +5,32 @@ import streamlit as st
 from streamlit_player import st_player
 
 # Get latest video data from DB
-df = func.df_from_postgres("select * from workout.view_yt_workout_finder;")
+df = func.df_from_postgres(
+    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 300;"
+)
 
 # Streamlit Setup
-st.title("WhoNeedsGyms?")
+st.set_page_config(
+    page_title="WhoNeedsGyms?",
+    page_icon="🏅",
+    layout="centered",
+    initial_sidebar_state="expanded",
+)
 
 # Button for skipping
 line = 0
 if st.button("Next!"):
-    line = random.randint(1, 4)
+    line = random.randint(1, 8)
 
 # Sidebar Filters
+st.sidebar.title("WhoNeedsGyms?")
+st.sidebar.write(
+    """
+This is a little hobby project by [me](https://github.com/falkzeh). It was built using the YouTube API and Streamlit framework.
+The data is being updated daily - so you'll see new videos every day!\n
+Have fun and push your limits! 💪"""
+)
+
 dur_choice = df["duration"].values[0]
 foc_choice = df["snippet"].values[0]
 ord_choice = df["order_category"].values[0]
@@ -27,6 +42,8 @@ foc = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
+
+st.sidebar.write("## How would you like to workout today?")
 foc_choice = st.sidebar.selectbox("Focus:", foc)
 
 dur = (

@@ -35,3 +35,5 @@ if __name__ == "__main__":
         for duration in ["long", "medium", "short"]:
             for order in ["relevance", "rating", "date"]:
                 get_results(snippet, duration=duration, order=order)
+
+    func.query_postgres("refresh materialized view workout.view_yt_workout_finder;")
