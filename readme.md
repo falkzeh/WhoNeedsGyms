@@ -1,5 +1,5 @@
 # WhoNeedsGyms?
-![Website](https://img.shields.io/website?down_color=red&down_message=down&style=flat-square&up_color=green&up_message=up&url=https%3A%2F%2Fwhoneedsgyms.fit%2F)
+![Website](https://img.shields.io/website?style=flat-square&url=http%3A%2F%2Fwww.whoneedsgyms.fit%2F)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/falkzeh/WhoNeedsGyms?style=flat-square)
 
 During the Corona Lockdown I've really gotten into home workouts on YouTube. Since there are countless of different workout types I created this little project as a hobby to get a minimalistic overview and quick access.
