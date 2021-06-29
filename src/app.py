@@ -6,7 +6,7 @@ from streamlit_player import st_player
 
 # Get latest video data from DB
 df = func.df_from_postgres(
-    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 300;"
+    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 500;"
 )
 
 # Streamlit Setup
@@ -20,7 +20,7 @@ st.set_page_config(
 # Button for skipping
 line = 0
 if st.button("Next!"):
-    line = random.randint(1, 8)
+    line = random.randint(1, 5)
 
 # Sidebar Filters
 st.sidebar.title("WhoNeedsGyms?")
