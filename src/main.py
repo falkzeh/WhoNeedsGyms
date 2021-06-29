@@ -1,4 +1,6 @@
 from functions import functions as func
+import prefect
+from prefect import task, Flow
 
 
 def get_results(snippet, duration, order):
@@ -17,7 +19,8 @@ def get_results(snippet, duration, order):
         pass
 
 
-if __name__ == "__main__":
+@task
+def get_new_videos():
     for snippet in [
         "Home Workout",
         "home workout for women",
@@ -37,3 +40,8 @@ if __name__ == "__main__":
                 get_results(snippet, duration=duration, order=order)
 
     func.query_postgres("refresh materialized view workout.view_yt_workout_finder;")
+
+
+flow = Flow("get_new_videos_flow", tasks=[get_new_videos])
+
+flow.register(project_name="WhoNeedsGyms")
