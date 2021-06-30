@@ -20,7 +20,11 @@ st.set_page_config(
 # Button for skipping
 line = 0
 if st.button("Next!"):
-    line = random.randint(1, 5)
+    if line == 5:
+        line = 0
+    else:
+        line = line + 1
+
 
 # Sidebar Filters
 st.sidebar.title("WhoNeedsGyms?")
