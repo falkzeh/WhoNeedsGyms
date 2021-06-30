@@ -6,7 +6,7 @@ from streamlit_player import st_player
 
 # Get latest video data from DB
 df = func.df_from_postgres(
-    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 3000;"
+    "select * from workout.view_yt_workout_finder where rownum <= 10 order by rownum desc, snippet desc, order_category, duration limit 3000;"
 )
 
 
@@ -71,10 +71,7 @@ df = (
 # Button for skipping
 line = 0
 if st.button("Shuffle!"):
-    if line == len(df) - 1:
-        line = 0
-    else:
-        line = line + 1
+    line = random.randint(0, len(df) - 1)
 
 url = df["video_id"].values[line]
 title = df["video_title"].values[line]
