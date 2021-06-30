@@ -6,7 +6,7 @@ from streamlit_player import st_player
 
 # Get latest video data from DB
 df = func.df_from_postgres(
-    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 500;"
+    "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 3000;"
 )
 
 
