@@ -71,7 +71,7 @@ df = (
 # Button for skipping
 line = 0
 if st.button("Next!"):
-    line = random.randint(0, len(df))
+    line = random.randint(0, len(df) - 1)
 
 url = df["video_id"].values[line]
 title = df["video_title"].values[line]
