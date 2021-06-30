@@ -9,6 +9,7 @@ df = func.df_from_postgres(
     "select * from workout.view_yt_workout_finder order by rownum desc, snippet desc, order_category, duration limit 500;"
 )
 
+
 # Streamlit Setup
 st.set_page_config(
     page_title="WhoNeedsGyms?",
@@ -16,15 +17,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="expanded",
 )
-
-# Button for skipping
-line = 0
-if st.button("Next!"):
-    if line == 5:
-        line = 0
-    else:
-        line = line + 1
-
 
 # Sidebar Filters
 st.sidebar.title("WhoNeedsGyms?")
@@ -75,6 +67,11 @@ df = (
     .loc[df["order_category"] == ord_choice]
     .reset_index(drop=True)
 )
+
+# Button for skipping
+line = 0
+if st.button("Next!"):
+    line = random.randint(0, len(df))
 
 url = df["video_id"].values[line]
 title = df["video_title"].values[line]
