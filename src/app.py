@@ -58,7 +58,7 @@ ord = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-ord_choice = st.sidebar.radio("Order:", ord, index=4)
+ord_choice = st.sidebar.radio("Order:", ord, index=1)
 
 # Select Video
 df = (
