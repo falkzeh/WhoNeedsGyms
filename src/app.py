@@ -49,7 +49,7 @@ dur = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-dur_choice = st.sidebar.radio("Duration:", dur, default=["medium"])
+dur_choice = st.sidebar.radio("Duration:", dur, index=1)
 
 ord = (
     df["order_category"]
@@ -58,7 +58,7 @@ ord = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-ord_choice = st.sidebar.radio("Order:", ord, default=["Default"])
+ord_choice = st.sidebar.radio("Order:", ord, index=4)
 
 # Select Video
 df = (
