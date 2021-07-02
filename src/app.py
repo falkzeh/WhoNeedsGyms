@@ -27,9 +27,9 @@ The data is being updated daily - so you'll see new videos every day!\n
 Have fun and push your limits! 💪"""
 )
 
-dur_choice = df["duration"].values[0]
+dur_choice = "medium"  # df["duration"].values[0]
 foc_choice = df["snippet"].values[0]
-ord_choice = df["order_category"].values[0]
+ord_choice = "Default"  # df["order_category"].values[0]
 
 foc = (
     df["snippet"]
