@@ -40,7 +40,7 @@ foc = (
 )
 
 st.sidebar.write("## How would you like to workout today?")
-foc_choice = st.sidebar.selectbox("Focus:", foc)
+foc_choice = st.sidebar.selectbox("Focus:", foc, index=1)
 
 dur = (
     df["duration"]
