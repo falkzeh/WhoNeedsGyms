@@ -27,9 +27,9 @@ The data is being updated daily - so you'll see new videos every day!\n
 Have fun and push your limits! 💪"""
 )
 
-dur_choice = "medium"  # df["duration"].values[0]
+dur_choice = df["duration"].values[0]
 foc_choice = df["snippet"].values[0]
-ord_choice = "Default"  # df["order_category"].values[0]
+ord_choice = df["order_category"].values[0]
 
 foc = (
     df["snippet"]
@@ -49,7 +49,7 @@ dur = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-dur_choice = st.sidebar.radio("Duration:", dur)
+dur_choice = st.sidebar.radio("Duration:", dur, default=["medium"])
 
 ord = (
     df["order_category"]
@@ -58,7 +58,7 @@ ord = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-ord_choice = st.sidebar.radio("Order:", ord)
+ord_choice = st.sidebar.radio("Order:", ord, default=["Default"])
 
 # Select Video
 df = (
