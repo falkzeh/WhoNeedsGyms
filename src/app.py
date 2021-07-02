@@ -40,7 +40,6 @@ foc = (
 )
 
 st.sidebar.write("## How would you like to workout today?")
-
 foc_choice = st.sidebar.selectbox("Focus:", foc)
 
 dur = (
@@ -50,9 +49,7 @@ dur = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-
-default_dur = dur.index("medium")
-dur_choice = st.sidebar.radio("Duration:", dur, default_dur)
+dur_choice = st.sidebar.radio("Duration:", dur)
 
 ord = (
     df["order_category"]
@@ -61,9 +58,7 @@ ord = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-
-default_ord = ord.index("Default")
-ord_choice = st.sidebar.radio("Order:", ord, default_ord)
+ord_choice = st.sidebar.radio("Order:", ord)
 
 # Select Video
 df = (
