@@ -13,9 +13,11 @@ db_host = os.environ["db_host"]
 db_port = os.environ["db_port"]
 
 ## Added for Streamlit Cloud
+"""
 yt_api_key = st.secrets["yt_api_key"]
 db_name = st.secrets["db_name"]
 db_user = st.secrets["db_user"]
 db_password = st.secrets["db_password"]
 db_host = st.secrets["db_host"]
 db_port = st.secrets["db_port"]
+"""
